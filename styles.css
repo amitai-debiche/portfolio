@@ -1,0 +1,94 @@
+/* styles.css */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+.milky-way-background {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background:  #191c20; /* Radial gradient from dark blue to black */
+}
+.milky-way-background::before,
+
+.milky-way-background::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    opacity: 0.15;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 2%, transparent 5%);
+    background-size: 50px 50px;
+}
+
+.milky-way-background::before {
+    transform: translate(-50%, -50%) rotate(30deg);
+}
+
+.milky-way-background::after {
+    transform: translate(-50%, -50%) rotate(-30deg);
+}
+
+.content {
+    position: relative;
+    color: white;
+    text-align: center;
+    padding-top: 5%;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(white, rgba(255, 255, 255, 0));
+    opacity: 0.2;
+    transform: rotate(var(--angle));
+    animation: shooting 5s linear infinite;
+}
+
+@keyframes shooting {
+    0% {
+        top: var(--start-top);
+        left: var(--start-left);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        top: var(--end-top);
+        left: var(--end-left);
+        opacity: 0;
+    }
+}
+.icons-wrapper {
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+    margin-right: 75px;
+
+}
+.icons-wrapper > a {
+    flex: 1;
+    z-index: 1;
+    text-align: right;
+    display: inline-block;
+    padding: 20px;
+    margin-left: 25px;
+}
+
+.icon {
+    max-width: 2rem;
+    max-height: 2rem;
+    filter: invert(1);
+}
+
+
