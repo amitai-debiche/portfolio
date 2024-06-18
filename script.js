@@ -27,16 +27,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             document.body.appendChild(star);
             activeStars++;
+            console.log(`Star created: start(${startTop}, ${startLeft}), end(${endTop}, ${endLeft}), angle(${angle}deg)`);
 
             // Remove the star after animation completes
             star.addEventListener('animationend', () => {
                 star.remove();
                 activeStars--;
+                console.log('Star removed');
             });
         }
 
+        clearTimeout(createShootingStar);
+
         // Create new shooting stars at intervals
-        setTimeout(createShootingStar, Math.random() * 3000 + 2000); // random interval between 2 and 5 seconds
+        setTimeout(createShootingStar, Math.random() * 3000 + 1000); // random interval between 2 and 5 seconds
     };
 
     createShootingStar();
