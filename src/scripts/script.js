@@ -11,8 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Generate random start and end positions
             const startTop = Math.random() * window.innerHeight;
             const startLeft = Math.random() * window.innerWidth;
-            const endTop = startTop + Math.random() * 500 - 300; // random variation
-            const endLeft = startLeft + Math.random() * 500 - 300; // random variation
+            console.log(window.innerHeight)
+            const endTop = Math.random() * (window.innerHeight - 150); // random variation
+            const endLeft = Math.random() * window.innerWidth - 200; // random variation
 
             // Calculate the angle of the shooting star
             const deltaY = endTop - startTop;
@@ -35,6 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 activeStars--;
                 console.log('Star removed');
             });
+
+            const checkOffScreen = setInterval(() => {
+                const rect = star.getBoundingClientRect();
+                if (rect.top > window.innerHeight || rect.bottom < 0 || rect.left > window.innerWidth || rect.right < 0) {
+                    star.remove();
+                    activeStars--;
+                    clearInterval(checkOffScreen);
+                }
+            }, 100); // Check every 100 milliseconds
         }
 
         clearTimeout(createShootingStar);
