@@ -1,0 +1,6 @@
+#Default to ignoring everything, add specific directories
+**/*
+
+#Keep src and deploy
+!src/**
+!deploy/**
