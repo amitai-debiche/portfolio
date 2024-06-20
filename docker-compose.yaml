@@ -1,0 +1,8 @@
+services:
+  the-styx_home:
+    build:
+      context: . 
+      dockerfile: client.Dockerfile
+    ports:
+      - "5000:80"
+
